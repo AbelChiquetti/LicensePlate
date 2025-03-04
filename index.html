@@ -4,198 +4,413 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mário Emplacamentos</title>
-    <!-- Importando o Tailwind CSS -->
+    <title>Mário Emplacamentos - Soluções em Placas Mercosul</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+        integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <style>
+        .swiper-button-next,
+        .swiper-button-prev {
+            color: #000;
+        }
+
+        .swiper-pagination-bullet-active {
+            background: #000;
+        }
+    </style>
 </head>
 
-<body class="bg-yellow-100 font-sans leading-normal tracking-normal">
-    <!-- Navegação -->
-    <nav class="bg-yellow-300 p-6 shadow-md flex flex-col md:flex-row">
-        <div class="container mx-auto flex justify-between items-center">
+<body class="bg-gray-50 font-sans leading-normal tracking-normal">
+
+    <div class="bg-blue-500 text-white text-center py-2">
+        <p class="text-sm">🎉 Troque sua placa Mercosul agora e ganhe um desconto especial! <a href="#contato"
+                class="underline">Saiba mais</a></p>
+    </div>
+
+    <nav class="bg-white shadow-md">
+        <div class="container mx-auto px-6 py-3 flex items-center justify-between">
             <a href="#" class="flex items-center">
-                <img src="header.png" alt="Logo da Mário Emplacamentos" class="h-12">
+                <img src="header.png" alt="Logo da Mário Emplacamentos" class="h-10 mr-2">
+                <span class="text-xl font-semibold">Mário Emplacamentos</span>
             </a>
-            <ul class="flex space-x-4">
-                <li><a href="#" class="text-gray-800 hover:text-yellow-600">Início</a></li>
-                <li><a href="#servicos" class="text-gray-800 hover:text-yellow-600">Serviços</a></li>
-                <li><a href="#sobre" class="text-gray-800 hover:text-yellow-600">Sobre</a></li>
-                <li><a href="https://api.whatsapp.com/send?phone=SEUNUMERO" class="text-white bg-green-500 hover:bg-green-600 px-4 py-2 rounded-md font-semibold transition duration-300" target="_blank">Fale Conosco</a></li>
-            </ul>
-        </div>
-    </nav>    
+            <div class="hidden md:flex space-x-6">
+                <a href="#" class="hover:text-blue-500 transition duration-300">Início</a>
+                <a href="#servicos" class="hover:text-blue-500 transition duration-300">Serviços</a>
+                <a href="#sobre" class="hover:text-blue-500 transition duration-300">Sobre Nós</a>
+                <a href="#precos" class="hover:text-blue-500 transition duration-300">Preços</a>
+                <a href="#contato" class="hover:text-blue-500 transition duration-300">Contato</a>
+            </div>
+            <a href="https://api.whatsapp.com/send?phone=SEUNUMERO" target="_blank"
+                class="hidden md:inline-block bg-green-500 hover:bg-green-600 text-white py-2 px-4 rounded-full transition duration-300">
+                <i class="fab fa-whatsapp mr-2"></i> Fale Conosco
+            </a>
 
-    <!-- Hero Section -->
-    <section class="bg-yellow-300 py-20">
-        <div class="container mx-auto text-center">
-            <h1 class="text-4xl md:text-6xl font-bold">
-                <span class="bg-clip-text text-transparent bg-gradient-to-r from-yellow-500 to-yellow-600">O seu carro com a nova</span>
-                <span class="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-blue-300">Placa Mercosul</span>
-            </h1>
-            <p class="text-lg md:text-xl mt-6 leading-relaxed font-medium text-gray-800">Aqui você troca na hora e em até 3x no cartão!</p>
-            <a href="#contato" class="mt-6 inline-block bg-white text-yellow-600 font-semibold px-6 py-3 rounded-full shadow-md hover:bg-yellow-200 transition duration-300">Entre em Contato</a>
-            <img class="mx-auto" src="carros.png">
+            <button id="menu-toggle" class="md:hidden text-gray-700 focus:outline-none focus:text-blue-500">
+                <i class="fas fa-bars text-xl"></i>
+            </button>
         </div>
-    </section>
 
-    <!-- Serviços Section -->
-    <section id="servicos" class="mt-14">
-        <div class="container mx-auto">
-            <h2 class="text-3xl font-bold text-center mb-12">Nossos Serviços</h2>
-            <div class="m-20 grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="bg-white rounded-lg shadow-md p-6">
-                    <h3 class="text-xl font-semibold mb-4">Emplacamento de Veículos Novos</h3>
-                    <p class="text-gray-700">Realizamos o emplacamento de veículos novos com rapidez e eficiência.</p>
-                </div>
-                <div class="bg-white rounded-lg shadow-md p-6">
-                    <h3 class="text-xl font-semibold mb-4">Transferência de Propriedade</h3>
-                    <p class="text-gray-700">Facilitamos o processo de transferência de propriedade de veículos.</p>
-                </div>
-                <div class="bg-white rounded-lg shadow-md p-6">
-                    <h3 class="text-xl font-semibold mb-4">Regularização de Documentação</h3>
-                    <p class="text-gray-700">Auxiliamos na regularização de documentação de veículos.</p>
-                </div>
+        <div id="mobile-menu" class="md:hidden bg-gray-100 shadow-md py-4 hidden">
+            <div class="container mx-auto px-6 flex flex-col space-y-3">
+                <a href="#" class="hover:text-blue-500 transition duration-300 block py-2">Início</a>
+                <a href="#servicos" class="hover:text-blue-500 transition duration-300 block py-2">Serviços</a>
+                <a href="#sobre" class="hover:text-blue-500 transition duration-300 block py-2">Sobre Nós</a>
+                <a href="#precos" class="hover:text-blue-500 transition duration-300 block py-2">Preços</a>
+                <a href="#contato" class="hover:text-blue-500 transition duration-300 block py-2">Contato</a>
+                <a href="https://api.whatsapp.com/send?phone=SEUNUMERO" target="_blank"
+                    class="bg-green-500 hover:bg-green-600 text-white py-2 px-4 rounded-full transition duration-300 block text-center">
+                    <i class="fab fa-whatsapp mr-2"></i> Fale Conosco
+                </a>
             </div>
         </div>
-    </section>
+    </nav>
 
-    <!-- Sobre Section -->
-    <section id="sobre" class="m-20 bg-yellow-100">
-        <div class="container mx-auto flex flex-col md:flex-row items-center">
-            <div class="w-full md:w-1/2 px-6 md:order-2">
-                <h2 class="text-3xl font-bold mb-6">Sobre Nós</h2>
-                <p class="text-xl text-gray-800">A Mário Emplacamentos é uma empresa dedicada a fornecer serviços de emplacamento de qualidade para clientes em todo o país. Com uma equipe experiente e comprometida, estamos aqui para atender às suas necessidades de emplacamento de forma eficiente e confiável.</p>
-            </div>
-            <div class="w-full md:w-1/2 px-6 md:order-2">
-                <h2 class="mt-6 md:mt-0 text-2xl md:text-3xl font-bold">Banner Mercoplacas</h2>
-                <p class="mt-2 md:mt-4">EMPLAQUE SEU VEÍCULO COM AGILIDADE E QUALIDADE</p>
-                <p class="mt-2 md:mt-4">O lugar ideal para você fazer a troca da sua placa é aqui. Atendemos a toda grande Florianópolis.</p>
-                <p class="mt-4 md:mt-8">RECEBA R$ 50,00 DE DESCONTO NO PAR DE PLACAS PARA CARROS OU R$ 25,00 DE DESCONTO NA PLACA PARA MOTO</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- FAQ Section -->
-    <section class="bg-yellow-200 py-10">
-        <div class="container mx-auto">
-            <h2 class="text-3xl font-bold text-center mb-8">Perguntas Frequentes</h2>
-            <div class="max-w-3xl mx-auto">
-                <!-- Pergunta 1 -->
-                <div class="mb-4">
-                    <button class="w-full flex justify-between items-center bg-white py-3 px-4 rounded-md shadow-md focus:outline-none focus:ring-2 focus:ring-blue-500">
-                        <span class="text-lg font-semibold">Quanto tempo leva para fazer o emplacamento?</span>
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform rotate-0 transition-transform duration-200" viewBox="0 0 20 20" fill="currentColor">
-                            <path fill-rule="evenodd" d="M10 12a1 1 0 0 1-1-1V7a1 1 0 0 1 2 0v4a1 1 0 0 1-1 1z" clip-rule="evenodd" />
-                            <path fill-rule="evenodd" d="M10 18a1 1 0 0 1-1-1V9a1 1 0 1 1 2 0v8a1 1 0 0 1-1 1z" clip-rule="evenodd" />
-                        </svg>
-                    </button>
-                    <div class="hidden bg-white p-4 rounded-md shadow-md mt-2">
-                        <p class="text-gray-700">O tempo para fazer o emplacamento pode variar dependendo da região e das taxas cobradas. É recomendável consultar o departamento de trânsito local para obter informações precisas sobre os custos.</p>
-                    </div>
-                </div>
-                <!-- Pergunta 2 -->
-                <div class="mb-4">
-                    <button class="w-full flex justify-between items-center bg-white py-3 px-4 rounded-md shadow-md focus:outline-none focus:ring-2 focus:ring-blue-500">
-                        <span class="text-lg font-semibold">É necessário levar documentos adicionais para o emplacamento?</span>
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform rotate-0 transition-transform duration-200" viewBox="0 0 20 20" fill="currentColor">
-                            <path fill-rule="evenodd" d="M10 12a1 1 0 0 1-1-1V7a1 1 0 0 1 2 0v4a1 1 0 0 1-1 1z" clip-rule="evenodd" />
-                            <path fill-rule="evenodd" d="M10 18a1 1 0 0 1-1-1V9a1 1 0 1 1 2 0v8a1 1 0 0 1-1 1z" clip-rule="evenodd" />
-                        </svg>
-                    </button>
-                    <div class="hidden bg-white p-4 rounded-md shadow-md mt-2">
-                        <p class="text-gray-700">Geralmente, é necessário levar documentos como RG, CPF, comprovante de residência e o documento do veículo para o emplacamento. No entanto, os documentos necessários podem variar dependendo da região.</p>
-                    </div>
-                </div>
-                <!-- Pergunta 3 -->
-                <div class="mb-4">
-                    <button class="w-full flex justify-between items-center bg-white py-3 px-4 rounded-md shadow-md focus:outline-none focus:ring-2 focus:ring-blue-500">
-                        <span class="text-lg font-semibold">Qual é o custo do emplacamento?</span>
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform rotate-0 transition-transform duration-200" viewBox="0 0 20 20" fill="currentColor">
-                            <path fill-rule="evenodd" d="M10 12a1 1 0 0 1-1-1V7a1 1 0 0 1 2 0v4a1 1 0 0 1-1 1z" clip-rule="evenodd" />
-                            <path fill-rule="evenodd" d="M10 18a1 1 0 0 1-1-1V9a1 1 0 1 1 2 0v8a1 1 0 0 1-1 1z" clip-rule="evenodd" />
-                        </svg>
-                    </button>
-                    <div class="hidden bg-white p-4 rounded-md shadow-md mt-2">
-                        <p class="text-gray-700">O custo do emplacamento pode variar dependendo da região e das taxas cobradas. É recomendável consultar o departamento de trânsito local para obter informações precisas sobre os custos.</p>
-                    </div>
-                </div>
-                <!-- Pergunta 4 -->
-                <div class="mb-4">
-                    <button class="w-full flex justify-between items-center bg-white py-3 px-4 rounded-md shadow-md focus:outline-none focus:ring-2 focus:ring-blue-500">
-                        <span class="text-lg font-semibold">Posso fazer o emplacamento pela internet?</span>
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform rotate-0 transition-transform duration-200" viewBox="0 0 20 20" fill="currentColor">
-                            <path fill-rule="evenodd" d="M10 12a1 1 0 0 1-1-1V7a1 1 0 0 1 2 0v4a1 1 0 0 1-1 1z" clip-rule="evenodd" />
-                            <path fill-rule="evenodd" d="M10 18a1 1 0 0 1-1-1V9a1 1 0 1 1 2 0v8a1 1 0 0 1-1 1z" clip-rule="evenodd" />
-                        </svg>
-                    </button>
-                    <div class="hidden bg-white p-4 rounded-md shadow-md mt-2">
-                        <p class="text-gray-700">Algumas regiões oferecem a opção de fazer o emplacamento pela internet, mas isso pode variar dependendo da legislação local. É recomendável verificar com o departamento de trânsito da sua região para obter informações precisas sobre o processo de emplacamento online.</p>
-                    </div>
-                </div>
-                <!-- Pergunta 5 -->
-                <div class="mb-4">
-                    <button class="w-full flex justify-between items-center bg-white py-3 px-4 rounded-md shadow-md focus:outline-none focus:ring-2 focus:ring-blue-500">
-                        <span class="text-lg font-semibold">Quais são as formas de pagamento aceitas?</span>
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform rotate-0 transition-transform duration-200" viewBox="0 0 20 20" fill="currentColor">
-                            <path fill-rule="evenodd" d="M10 12a1 1 0 0 1-1-1V7a1 1 0 0 1 2 0v4a1 1 0 0 1-1 1z" clip-rule="evenodd" />
-                            <path fill-rule="evenodd" d="M10 18a1 1 0 0 1-1-1V9a1 1 0 1 1 2 0v8a1 1 0 0 1-1 1z" clip-rule="evenodd" />
-                        </svg>
-                    </button>
-                    <div class="hidden bg-white p-4 rounded-md shadow-md mt-2">
-                        <p class="text-gray-700">Geralmente, as formas de pagamento aceitas incluem dinheiro, cartão de crédito e débito. No entanto, é recomendável verificar com a empresa de emplacamento as opções de pagamento disponíveis.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Endereço -->
-    <section class="bg-yellow-400 py-10 px-8 md:px-16">
-        <div class="container mx-auto flex flex-col md:flex-row items-center">
-            <!-- Conteúdo à esquerda -->
-            <div class="w-full md:w-1/2 text-center md:text-left">
-                <h2 class="text-2xl md:text-3xl font-bold">ENCONTRE-NOS</h2>
-                <div class="mt-6 text-left">
-                    <h3 class="text-lg font-semibold">Endereço:</h3>
-                    <p class="mt-2">Estamos localizados na Rua Vicente Favela, 36</p>
-                    <p>Centro, Lavras da Mangabeira - CE</p>
-                    <h3 class="text-lg font-semibold mt-4">Horário de Funcionamento:</h3>
-                    <p class="mt-2">Segunda a Sexta: 08:00 - 18:00</p>
-                    <p>Sábado: 08:00 - 12:00</p>
-                    <!-- Botão do WhatsApp -->
-                    <a href="https://api.whatsapp.com/send?phone=SEUNUMERO" target="_blank" class="inline-block bg-green-500 text-white px-6 py-3 rounded-md hover:bg-green-600 transition duration-300 mt-4">
-                        Fale Conosco pelo WhatsApp
+    <section class="bg-gradient-to-br from-blue-100 to-blue-50 py-24">
+        <div class="container mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+            <div class="text-center md:text-left">
+                <h1 class="text-4xl md:text-5xl font-bold text-gray-800 mb-6">
+                    Emplacamento Rápido e Seguro para o Seu Veículo
+                </h1>
+                <p class="text-lg text-gray-700 mb-8">
+                    Conte com a Mário Emplacamentos para emplacar seu veículo com a nova placa Mercosul. Agilidade,
+                    segurança e os melhores preços!
+                </p>
+                <div class="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4">
+                    <a href="#contato"
+                        class="bg-blue-500 hover:bg-blue-600 text-white py-3 px-6 rounded-full font-semibold transition duration-300">
+                        Solicite um Orçamento
+                    </a>
+                    <a href="#servicos"
+                        class="bg-white hover:bg-gray-100 text-blue-500 py-3 px-6 rounded-full font-semibold transition duration-300 border border-blue-500">
+                        Nossos Serviços
                     </a>
                 </div>
             </div>
-            <!-- Mapa do Google à direita -->
-            <div class="w-full md:w-1/2 mt-6 md:mt-0">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31102.564067442476!2d-38.97964533774139!3d-12.961587970680161!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x71605b6563b4c9f%3A0x1e38ebea39e8c9b7!2sRua%20Vicente%20Favela%2C%2036%20-%20Centro%2C%20Lavras%20da%20Mangabeira%20-%20CE%2C%6320000-000!5e0!3m2!1spt-BR!2sbr!4v1649711555673!5m2!1spt-BR!2sbr" width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            <div>
+                <img src="carros.png" alt="Carros com Placa Mercosul" class="rounded-lg shadow-lg">
             </div>
         </div>
     </section>
-    
-    
 
-    <!-- Rodapé -->
-    <footer class="bg-yellow-400 text-dark py-8">
-        <div class="container mx-auto text-center">
-            <p>&copy; 2024 Mário Emplacamentos. Todos os direitos reservados.</p>
+    <section id="servicos" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">Nossos Serviços Especializados</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition duration-300">
+                    <img src="servico1.jpg" alt="Emplacamento de Veículos Novos" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-3">Emplacamento de Veículos Novos</h3>
+                        <p class="text-gray-600 mb-4">Agilidade e segurança para emplacar seu veículo 0km com a placa
+                            Mercosul.</p>
+                        <a href="#contato"
+                            class="inline-block bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-full transition duration-300">
+                            Saiba Mais
+                        </a>
+                    </div>
+                </div>
+                <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition duration-300">
+                    <img src="servico2.jpg" alt="Transferência de Propriedade" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-3">Transferência de Propriedade</h3>
+                        <p class="text-gray-600 mb-4">Facilitamos o processo de transferência de propriedade do seu
+                            veículo.</p>
+                        <a href="#contato"
+                            class="inline-block bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-full transition duration-300">
+                            Saiba Mais
+                        </a>
+                    </div>
+                </div>
+                <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition duration-300">
+                    <img src="servico3.jpg" alt="Regularização de Documentação" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-3">Regularização de Documentação</h3>
+                        <p class="text-gray-600 mb-4">Resolvemos pendências e regularizamos a documentação do seu
+                            veículo.</p>
+                        <a href="#contato"
+                            class="inline-block bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-full transition duration-300">
+                            Saiba Mais
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="sobre" class="py-16 bg-blue-50">
+        <div class="container mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+            <div>
+                <img src="sobre-nos.jpg" alt="Equipe Mário Emplacamentos" class="rounded-lg shadow-lg">
+            </div>
+            <div>
+                <h2 class="text-3xl font-bold text-gray-800 mb-6">Sobre a Mário Emplacamentos</h2>
+                <p class="text-lg text-gray-700 mb-4">
+                    Somos uma empresa com anos de experiência no mercado de emplacamentos, oferecendo soluções rápidas e
+                    eficientes para você.
+                </p>
+                <p class="text-lg text-gray-700 mb-6">
+                    Nossa equipe é altamente qualificada e está sempre pronta para atender às suas necessidades com
+                    excelência.
+                </p>
+                <a href="#contato"
+                    class="bg-blue-500 hover:bg-blue-600 text-white py-3 px-6 rounded-full font-semibold transition duration-300">
+                    Entre em Contato
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">O Que Nossos Clientes Dizem</h2>
+            <div class="swiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide bg-white rounded-lg shadow-md p-8">
+                        <div class="flex items-center mb-4">
+                            <img src="cliente1.jpg" alt="Cliente 1" class="w-12 h-12 rounded-full mr-4">
+                            <div>
+                                <p class="font-semibold text-gray-800">Maria Souza</p>
+                                <p class="text-sm text-gray-500">Proprietária de Veículo</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-700">"Serviço excelente! Rápido, eficiente e com um ótimo atendimento.
+                            Recomendo a todos!"</p>
+                    </div>
+                    <div class="swiper-slide bg-white rounded-lg shadow-md p-8">
+                        <div class="flex items-center mb-4">
+                            <img src="cliente2.jpg" alt="Cliente 2" class="w-12 h-12 rounded-full mr-4">
+                            <div>
+                                <p class="font-semibold text-gray-800">João Paulo</p>
+                                <p class="text-sm text-gray-500">Vendedor de Automóveis</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-700">"A Mário Emplacamentos é a nossa parceira de confiança. Sempre
+                            entregam um serviço de alta qualidade."</p>
+                    </div>
+                    <div class="swiper-slide bg-white rounded-lg shadow-md p-8">
+                        <div class="flex items-center mb-4">
+                            <img src="cliente3.jpg" alt="Cliente 3" class="w-12 h-12 rounded-full mr-4">
+                            <div>
+                                <p class="font-semibold text-gray-800">Ana Clara</p>
+                                <p class="text-sm text-gray-500">Estudante</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-700">"Fui muito bem atendida e o emplacamento ficou pronto rapidinho.
+                            Super recomendo!"</p>
+                    </div>
+                </div>
+
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+
+                <div class="swiper-pagination"></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="precos" class="py-16 bg-blue-50">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">Tabela de Preços</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-4">Emplacamento de Carro</h3>
+                    <p class="text-gray-600 mb-4">Emplacamento completo para carros de passeio.</p>
+                    <p class="text-2xl font-bold text-blue-500 mb-4">R$ 250,00</p>
+                    <a href="#contato"
+                        class="inline-block bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-full transition duration-300">
+                        Solicitar
+                    </a>
+                </div>
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-4">Emplacamento de Moto</h3>
+                    <p class="text-gray-600 mb-4">Emplacamento completo para motocicletas.</p>
+                    <p class="text-2xl font-bold text-blue-500 mb-4">R$ 180,00</p>
+                    <a href="#contato"
+                        class="inline-block bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-full transition duration-300">
+                        Solicitar
+                    </a>
+                </div>
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-4">Transferência de Propriedade</h3>
+                    <p class="text-gray-600 mb-4">Serviço de transferência de propriedade do veículo.</p>
+                    <p class="text-2xl font-bold text-blue-500 mb-4">R$ 150,00</p>
+                    <a href="#contato"
+                        class="inline-block bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-full transition duration-300">
+                        Solicitar
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="bg-gray-50 py-16">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-8">Perguntas Frequentes</h2>
+            <div class="max-w-3xl mx-auto">
+                <div class="mb-4">
+                    <button
+                        class="faq-button w-full flex justify-between items-center bg-white py-3 px-4 rounded-md shadow-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        <span class="text-lg font-semibold text-gray-800">Quanto tempo leva para fazer o
+                            emplacamento?</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform duration-200"
+                            viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd"
+                                d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                clip-rule="evenodd" />
+                        </svg>
+                    </button>
+                    <div class="faq-answer hidden bg-white p-4 rounded-md shadow-md mt-2">
+                        <p class="text-gray-700">O tempo para fazer o emplacamento varia, mas geralmente leva de 30
+                            minutos a 1 hora.</p>
+                    </div>
+                </div>
+                <div class="mb-4">
+                    <button
+                        class="faq-button w-full flex justify-between items-center bg-white py-3 px-4 rounded-md shadow-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        <span class="text-lg font-semibold text-gray-800">Quais documentos são necessários para o
+                            emplacamento?</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform duration-200"
+                            viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd"
+                                d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                clip-rule="evenodd" />
+                        </svg>
+                    </button>
+                    <div class="faq-answer hidden bg-white p-4 rounded-md shadow-md mt-2">
+                        <p class="text-gray-700">Documento do veículo (CRV ou CRLV), RG, CPF e comprovante de
+                            residência.</p>
+                    </div>
+                </div>
+                <div class="mb-4">
+                    <button
+                        class="faq-button w-full flex justify-between items-center bg-white py-3 px-4 rounded-md shadow-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        <span class="text-lg font-semibold text-gray-800">Quais são as formas de pagamento
+                            aceitas?</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform duration-200"
+                            viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd"
+                                d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                clip-rule="evenodd" />
+                        </svg>
+                    </button>
+                    <div class="faq-answer hidden bg-white p-4 rounded-md shadow-md mt-2">
+                        <p class="text-gray-700">Aceitamos dinheiro, cartão de crédito e débito.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contato" class="py-24 bg-gradient-to-br from-blue-100 to-blue-50">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div class="md:order-2">
+                    <h2 class="text-3xl font-bold text-center md:text-left text-gray-800 mb-6">Entre em Contato</h2>
+                    <form class="bg-white shadow-md rounded-lg p-8">
+                        <div class="mb-4">
+                            <label for="nome" class="block text-gray-700 text-sm font-bold mb-2">Nome:</label>
+                            <input type="text" id="nome" name="nome"
+                                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                placeholder="Seu Nome">
+                        </div>
+                        <div class="mb-4">
+                            <label for="email" class="block text-gray-700 text-sm font-bold mb-2">Email:</label>
+                            <input type="email" id="email" name="email"
+                                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                placeholder="Seu Email">
+                        </div>
+                        <div class="mb-6">
+                            <label for="mensagem" class="block text-gray-700 text-sm font-bold mb-2">Mensagem:</label>
+                            <textarea id="mensagem" name="mensagem" rows="4"
+                                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                placeholder="Sua Mensagem"></textarea>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <button
+                                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                                type="submit">
+                                Enviar
+                            </button>
+                        </div>
+                    </form>
+                </div>
+                <div class="md:order-1">
+                    <h2 class="text-3xl font-bold text-center md:text-left text-gray-800 mb-6">Nossos Contatos</h2>
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-map-marker-alt text-blue-500 mr-4 text-xl"></i>
+                        <p class="text-gray-700">Rua Vicente Favela, 36 - Centro, Lavras da Mangabeira - CE</p>
+                    </div>
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-phone text-blue-500 mr-4 text-xl"></i>
+                        <p class="text-gray-700">(XX) XXXX-XXXX</p>
+                    </div>
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-envelope text-blue-500 mr-4 text-xl"></i>
+                        <p class="text-gray-700">contato@marioemplacamentos.com.br</p>
+                    </div>
+                    <div class="flex items-center mb-4">
+                        <i class="fab fa-whatsapp text-blue-500 mr-4 text-xl"></i>
+                        <p class="text-gray-700">(XX) XXXXX-XXXX</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-blue-600 text-white py-8">
+        <div class="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center">
+            <p class="text-sm">© 2024 Mário Emplacamentos. Todos os direitos reservados.</p>
+            <div class="flex space-x-4 mt-4 md:mt-0">
+                <a href="#" class="hover:text-blue-200 transition duration-300"><i
+                        class="fab fa-facebook-f"></i></a>
+                <a href="#" class="hover:text-blue-200 transition duration-300"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="hover:text-blue-200 transition duration-300"><i class="fab fa-twitter"></i></a>
+            </div>
         </div>
     </footer>
 
-    <!-- Script para manipulação do FAQ -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const faqButtons = document.querySelectorAll('.bg-white');
-            faqButtons.forEach(function (button) {
-                button.addEventListener('click', function () {
-                    const answer = this.nextElementSibling;
-                    answer.classList.toggle('hidden');
-                    const icon = this.querySelector('svg');
-                    icon.classList.toggle('rotate-180');
-                });
+        const swiper = new Swiper('.swiper', {
+            spaceBetween: 30,
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            breakpoints: {
+                640: {
+                    slidesPerView: 1,
+                },
+                768: {
+                    slidesPerView: 2,
+                },
+                1024: {
+                    slidesPerView: 3,
+                },
+            }
+        });
+
+        const faqButtons = document.querySelectorAll('.faq-button');
+        faqButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const answer = button.nextElementSibling;
+                answer.classList.toggle('hidden');
+                const svg = button.querySelector('svg');
+                svg.classList.toggle('rotate-180');
             });
+        });
+
+        // Menu Mobile
+        const menuToggle = document.querySelector('#menu-toggle');
+        const mobileMenu = document.querySelector('#mobile-menu');
+
+        menuToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
         });
     </script>
 </body>
